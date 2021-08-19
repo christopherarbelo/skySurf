@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  aircraft: one
+  origin: one
+  destination: one
+  departure_time: 2021-08-18 18:41:14
+  arrival_time: 2021-08-18 18:41:14
+  date: 2021-08-18
+
+two:
+  aircraft: two
+  origin: two
+  destination: two
+  departure_time: 2021-08-18 18:41:14
+  arrival_time: 2021-08-18 18:41:14
+  date: 2021-08-18
