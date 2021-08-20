@@ -1,0 +1,37 @@
+<h1>Flights</h1>
+<section class="flights">
+  <%= form_with url: '/booking', method: :post do |f| %>
+  <table class="flights_table" id="flights_table">
+  <thead>
+    <tr>
+      <td>Departs</td>
+      <td>Arrives</td>
+      <td>Duration</td>
+      <td>Select</td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @flights.each do |flight| %>
+  <tr>
+    <td>
+    <%= format_flight_time(flight.departure_time) %>
+    <%= flight.origin.code %>
+    <i class="fas fa-plane"></i><%= flight.aircraft.model %>
+    </td>
+    <td>
+    <%= format_flight_time(flight.arrival_time) %>
+    <%= flight.destination.code %>
+    </td>
+    <td>
+    <%= format_flight_duration(flight.arrival_time - flight.departure_time) %>
+    </td>
+    <td>
+    <%= f.radio_button :flight_id, flight.id %>
+    </td>
+  </tr>
+  <% end %>
+  </tbody>
+  </table>
+  <%= f.submit 'Continue' %>
+  <% end %>
+</section>

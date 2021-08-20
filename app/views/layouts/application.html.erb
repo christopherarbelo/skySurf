@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SkySurf</title>
+    <title>skySurf</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= favicon_link_tag 'favicon.png', type: 'image/png' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <% flash.each do |name, message| %>
+      <%= content_tag :div, message, class: name %>
+    <% end %>
+    <nav id="navbar" class="navbar navbar-expand-md navbar-light">
+      <%= link_to root_path, class: 'navbar_logo navbar-brand', id: 'navbar_logo' do %>skySurf<% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>

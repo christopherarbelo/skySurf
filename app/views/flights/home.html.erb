@@ -1,0 +1,11 @@
+<%= form_with url: "/flights", method: :get do |f| %>
+  <%= f.label :travelers, 'Travelers' %>
+  <%= f.number_field :travelers, in: 1..7, step: 1 %>
+  <%= f.label :origin, "From" %>
+  <%= select_tag(:origin, options_for_select(@airports)) %>
+  <%= f.label :destination, "To" %>
+  <%= select_tag(:destination, options_for_select(@airports)) %>
+  <%= f.label :date, "Depart" %>
+  <input type="date" id="date" name="date">
+  <%= f.submit "Search" %>
+<% end %>

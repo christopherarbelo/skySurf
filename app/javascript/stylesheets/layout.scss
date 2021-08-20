@@ -1,0 +1,8 @@
+@use 'custom' as *;
+
+.navbar {
+  background-color: $primary;
+  .navbar_logo {
+    color: white;
+  }
+}
