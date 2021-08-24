@@ -9,24 +9,26 @@
     <%= favicon_link_tag 'favicon.png', type: 'image/png' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
   </head>
 
   <body>
+    <nav id="navbar" class="navbar navbar-dark navbar-expand-sm sticky-top shadow">
+    <div class="container-fluid">
+      <%= link_to 'skySurf', root_path, id: 'navbar_logo', class: 'navbar_logo navbar-brand fs-3' %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar_links collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+        <li class="nav-item"><%= link_to 'Book', '#', class: 'navbar_links_link nav-link fs-4' %></li>
+        <li class="nav-item"><%= link_to 'Travel Info', '#', class: 'navbar_links_link nav-link fs-4' %></li>
+        </ul>
+      </div>
+    </div>
+    </nav>
     <% flash.each do |name, message| %>
       <%= content_tag :div, message, class: name %>
     <% end %>
-    <nav id="navbar" class="navbar">
-      <%= link_to root_path, id: 'navbar_logo', class: 'navbar_logo' do %>skySurf<% end %>
-      <div class="navbar_links">
-      <%= link_to 'Book', '#', class: 'navbar_links_link' %>
-      <%= link_to 'Travel Info', '#', class: 'navbar_links_link' %>
-      </div>
-      <i class="fas fa-bars navbar_menu_icon"></i>
-    </nav>
-    <div class="spacer"></div>
     <%= yield %>
   </body>
 </html>
