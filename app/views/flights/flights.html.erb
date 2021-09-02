@@ -47,7 +47,7 @@
     <% end %>
     </tbody>
     </table>
-    <%# hidden_field_tag 'passengers', @flight_search_params[:passengers] %>
+    <%= hidden_field_tag 'passengers', @flight_search_params[:passengers] %>
     <%= f.submit 'Continue', class: 'btn btn-primary submit_orange' %>
     <% end %>
 </main>
