@@ -1,5 +1,5 @@
 @use 'custom' as *;
-@use 'bootstrap' as *;
+@use 'bootstrap';
 
 html {
   font-family: "Open Sans", sans-serif;
@@ -8,9 +8,98 @@ html {
 
 .navbar {
   background-image: linear-gradient(to bottom, #ff8300, #ffa90a);
-  padding: 0.8rem 15%;
+  padding: 0.4rem 12.5%;
 
-  @include media-breakpoint-down(sm) {
-    padding: 0.8rem 0;
+  @include bootstrap.media-breakpoint-down(md) {
+    padding: 0.4rem 1rem;
+  }
+}
+
+.footer {
+  margin: 0 auto;
+  background: #f0f0f0;
+  
+  &_non_accord {
+    display: grid;
+    grid-template-areas: "get-to-know-us policies skySurf-in-action stay-connected";
+    padding: 2rem 12.5%;
+    grid-gap: 1rem;
+  }
+
+  &_accord {
+    display: none;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: rgba($color: $primary, $alpha: 0.7);
+    font-size: 0.9rem;
+  }
+
+  &_link_container {
+    header {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .get-to-know-us {
+    grid-area: get-to-know-us;
+  }
+
+  .policies {
+    grid-area: policies;
+  }
+
+  .skySurf-in-action {
+    grid-area: skySurf-in-action;
+  }
+  
+  .social-media-icons {
+    color: $primary;
+  }
+  
+  .stay-connected {
+    grid-area: stay-connected;
+
+
+    li:nth-child(even) {
+      margin: 1rem 0;
+    }
+
+    .lg-icon {
+      font-size: 1.5rem;
+      width: 2rem;
+      margin-right: 0.5rem;
+
+      svg {
+        margin: 0 auto;
+        display: block;
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      margin-left: -0.2rem;
+    }
+  }
+}
+
+.footer_list_title {
+  color: $primary;
+  font-weight: 700;
+}
+
+@include bootstrap.media-breakpoint-down(lg) {
+  .footer_non_accord {
+    grid-template-areas:
+      "get-to-know-us policies skySurf-in-action"
+      "stay-connected stay-connected stay-connected";
   }
 }
