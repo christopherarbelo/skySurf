@@ -2,7 +2,9 @@ class FlightsController < ApplicationController
   helper_method :format_flight_time, :format_flight_duration
   
   def home
-    @airports = Airport.all.map { |airport| [airport.name, airport.id]}
+    @airports = Airport.all.map { |airport| ["#{airport.location} (#{airport.code})", airport.id]}
+    @trips = [["One Way", "one-way"]]
+    @travelers = [['1 traveler', 1], ['2 travelers', 2], ['3 travelers', 3], ['4 travelers', 4]]
   end
 
   def flights

@@ -1,11 +1,96 @@
-<%= form_with url: "/flights", method: :get do |f| %>
-  <%= f.label :travelers, 'Travelers' %>
-  <%= f.number_field :travelers, in: 1..7, step: 1 %>
-  <%= f.label :origin, "From" %>
-  <%= select_tag(:origin, options_for_select(@airports)) %>
-  <%= f.label :destination, "To" %>
-  <%= select_tag(:destination, options_for_select(@airports)) %>
-  <%= f.label :date, "Depart" %>
-  <input type="date" id="date" name="date">
-  <%= f.submit "Search" %>
-<% end %>
+<main class="homepage__main">
+  <section class="flight_search">
+    <h2 class="text-center pt-5 pb-3 flight_search_header fw-normal">Travel on your mind?</h2>
+
+    <%# travel type section %>
+    <div class="d-flex justify-content-center">
+      <section class="travel_method">
+        <span class="travel_method_item travel_method_current">
+          <i class="fas fa-plane-departure me-1"></i>Flights
+        </span>
+      </section>
+    </div>
+
+    <%# flight search form %>
+    <%= form_with url: "/flights", method: :get, class: 'search_form container shadow' do |f| %>
+      <div class="row g-1 search_form_top">
+        <div class="col">
+          <%= select_tag(:trip, options_for_select(@trips), class: 'form-select form-select-sm trip_select') %>
+        </div>
+        <div class="col">
+          <%= select_tag(:trip, options_for_select(@travelers), class: 'form-select form-select-sm travelers_select') %>
+        </div>
+      </div>
+      <div class="row g-1 search_form_bottom">
+        <div class="col-sm-6 col-lg-3 form-floating input_container">
+          <%= select_tag(:origin, options_for_select(@airports), class: 'form-control form-control-lg') %>
+          <%= f.label :origin, "From" %>
+        </div>
+        <div class="col-sm-6 col-lg-3 form-floating input_container">
+          <%= select_tag(:destination, options_for_select(@airports), class: 'form-control form-control-lg') %>
+          <%= f.label :destination, "To" %>
+        </div>
+        <div class="col-sm-12 col-lg-3 form-floating input_container">
+          <input type="date" id="date" name="date" class="form-control form-control-lg">
+          <%= f.label :date, "Depart" %>
+        </div>
+        <div class="col-sm-12 col-lg-3 submit_div">
+          <%= f.submit "Search flights", class: 'btn btn-primary form-control form-control-lg' %>
+        </div>
+      </div>
+      </div>
+    <% end %>
+  <p class="text-center mt-4 pb-4"><a href="#" class="info-link">Our bag polices have changed</a></p>
+  </section>
+
+  <%# news section %>
+  <section class="news my-5 container justify-content-between d-flex flex-wrap">
+    <section class="news_promo_jumbo fort_lauderdale_promo rounded">
+      <div class="opaque_background">
+        <h3>$300 off Fort Lauderdale. Shell we go?</h3>
+        <p>The coast is clear for savings when you bundle flights + hotel by 8/30 for travel 8/24/21 - 4/30/22. </p>
+        <button type="button" class="btn btn-primary">Get promo code<i class="fas fa-external-link-alt ms-2"></i></button>
+        <p class="news_informative">$1,500 Min. spend & terms apply.</p>
+      </div>
+    </section>
+    <%# news cards %>
+    <section class="news_card rounded d-flex flex-wrap lex-column align-items-center round">
+      <figure class="news_card_figure">
+        <%= image_tag 'homepage/transcon.png', class: 'img-fluid news_card_image' %>
+      </figure>
+      <div class="px-4 pb-1">
+        <h3 class="text-center">Transcon? It’s on. From $99 one-way.</h3>
+        <p class="text-center">With more routes and more flights between your favorite East Coast and West Coast destinations.
+        Fare shown: New York (JFK) to San Francisco. Book by 8/30. Travel 9/10-11/17/21 (excl. Sun). Terms apply.</p>
+        <p class="text-center">
+          <a href="#">Go coast to coast <i class="fas fa-caret-right"></i></a>
+        </p>
+      </div>
+    </section>
+    <section class="news_card rounded d-flex flex-column align-items-center round">
+      <figure class="news_card_figure">
+        <%= image_tag 'homepage/plans.png', class: 'img-fluid news_card_image' %>
+      </figure>
+      <div class="px-4 pb-1">
+        <h3 class="text-center">Put flexibility on the itinerary. </h3>
+        <p class="text-center">We’ve waived change and cancellation fees on Blue Basic bookings made 8/25-10/31/21.
+         And, there are no change or cancel fees for our other fares. Period.</p>
+        <p class="text-center">
+          <a href="#">More on changes/cancellations <i class="fas fa-caret-right"></i></a>
+        </p>
+      </div>
+    </section>
+    <section class="news_card rounded d-flex flex-column align-items-center round">
+      <figure class="news_card_figure">
+        <%= image_tag 'homepage/credit_card.png', class: 'img-fluid news_card_image' %>
+      </figure>
+      <div class="px-4 pb-1">
+        <h3 class="text-center">Watch the points fly in.</h3>
+        <p class="text-center">Rack up award travel faster with the skySurf Card or skySurf Plus Card. Terms apply.</p>
+        <p class="text-center">
+          <a href="#">Apply now <i class="fas fa-caret-right"></i></a>
+        </p>
+      </div>
+    </section>
+  </section>
+</main>

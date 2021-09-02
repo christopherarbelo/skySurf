@@ -1,0 +1,150 @@
+@use 'custom' as *;
+@use 'bootstrap';
+
+.homepage__main {
+  .flight_search {
+    min-height: 60vh;
+    background: url(../../assets/images/pattern-home.svg);
+
+    .travel_method {
+      border-bottom: 1px solid white;
+      margin: 0 auto;
+      margin-bottom: 1.5rem;
+      display: inline-flex;
+      justify-content: center;
+
+      &_item {
+        margin-bottom: -1px;
+        color: white;
+      }
+
+      &_current {
+        border-bottom: 4px solid #3a7df9;
+      }
+    }
+
+    .search_form {
+      background: #f3f4f7;
+      padding: 2rem 1rem;
+      margin: 0 auto;
+      border-radius: 10px;
+      width: 75%;
+
+      &_top {
+        .col {
+          flex: 0 0 content;
+        }
+        .trip_select,
+        .travelers_select {
+          color: $primary;
+        }
+      }
+
+      &_bottom {
+        select,
+        input {
+          font-size: 1rem;
+        }
+
+        label {
+          left: 6px;
+        }
+
+        .input_container {
+          flex-grow: 2;
+        }
+      }
+
+      input[type="submit"] {
+        height: 100%;
+        background-color: $primary;
+        border: 1px solid $primary;
+        font-weight: 800;
+      }
+    }
+
+    .info-link {
+      color: white;
+    }
+
+    &_header {
+      color: white;
+    }
+  }
+
+  .news {
+    width: 75%;
+    padding: 0;
+
+    &_card {
+      flex: 0 0 32%;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgb(176, 176, 176);
+
+      a {
+        text-decoration: none;
+        color: $primary;
+      }
+
+      &_figure {
+        height: 250px;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 0;
+      }
+
+      &_image {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    &_promo_jumbo {
+      height: 350px;
+      flex: 1 1 auto;
+      margin-bottom: 2rem;
+
+      .opaque_background {
+        background: rgba($color: #fdfdfc, $alpha: 0.7);
+        float: right;
+        width: 40%;
+        height: 100%;
+        padding: 2rem;
+      }
+
+      .news_informative {
+        font-size: 0.75rem;
+      }
+    }
+
+    .fort_lauderdale_promo {
+      background-image: url("../../assets/images/homepage/fort-lauderdale.jpeg");
+    }
+  }
+}
+
+// media queries
+@include bootstrap.media-breakpoint-down(md) {
+  .opaque_background {
+    width: 60% !important;
+  }
+  .news_card {
+    flex: 1 1 auto !important;
+  }
+  .search_form,
+  .news {
+    width: 85% !important;
+  }
+}
+
+@include bootstrap.media-breakpoint-down(sm) {
+  .opaque_background {
+    width: 100% !important;
+  }
+  .search_form,
+  .news {
+    width: 95% !important;
+  }
+}
