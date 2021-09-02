@@ -1,0 +1,46 @@
+@use 'custom' as *;
+@use 'bootstrap';
+
+.flights {
+  margin: 2rem auto;
+  width: 75%;
+
+  .submit_orange {
+    background-color: $primary;
+    border-color: $primary;
+  }
+
+  .aircraft_model,
+  .flight_airport {
+    font-size: 0.75rem;
+  }
+
+  tr:hover {
+    background: #ffecc8 !important;
+  }
+}
+
+// form
+.form-check-input:checked {
+  background-color: $primary;
+  border-color: $primary;
+}
+
+.form-check-input:focus {
+  border-color: $primary;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
+}
+
+// media queries
+@include bootstrap.media-breakpoint-down(md) {
+  main.flights {
+    width: 85% !important;
+  }
+}
+
+@include bootstrap.media-breakpoint-down(sm) {
+  main.flights {
+    width: 95% !important;
+  }
+}

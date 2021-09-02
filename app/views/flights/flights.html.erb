@@ -1,37 +1,53 @@
-<h1>Flights</h1>
-<section class="flights">
-  <%= form_with url: '/booking', method: :post do |f| %>
-  <table class="flights_table" id="flights_table">
-  <thead>
+<main class="flights">
+  <h1>Select your flight</h1>
+    <%= form_with url: '/booking', method: :post, class: 'flights_form' do |f| %>
+    <table class="flights_table table table-hover" id="flights_table">
+    <thead>
+      <tr>
+        <td>Departs</td>
+        <td>Arrives</td>
+        <td>Duration</td>
+        <td>Select</td>
+      </tr>
+    </thead>
+    <tbody>
+    <% @flights.each do |flight| %>
     <tr>
-      <td>Departs</td>
-      <td>Arrives</td>
-      <td>Duration</td>
-      <td>Select</td>
+      <%# departs row %>
+      <td>
+        <%= format_flight_time(flight.departure_time) %>
+        <div class="d-flex align-items-center flex-wrap">
+          <div>
+            <span class="location_icon me-1"><i class="fas fa-map-marker-alt"></i></span>
+            <span class="flight_airport me-2"><%= flight.origin.code %></span>
+          </div>
+          <div>
+            <span class="aircraft_icon"><i class="fas fa-plane"></i></span>
+            <span class="aircraft_model ms-2"><%= flight.aircraft.model %></span>
+          </div>
+        </div>
+      </td>
+      <%# arrives row %>
+      <td>
+        <%= format_flight_time(flight.arrival_time) %>
+        <div class="d-flex align-items-center flex-wrap">
+          <span class="location_icon me-1"><i class="fas fa-map-marker-alt"></i></span>
+          <span class="flight_airport me-2"><%= flight.destination.code %></span>
+        </div>
+      </td>
+      <%# flight time row %>
+      <td>
+        <%= format_flight_duration(flight.arrival_time - flight.departure_time) %>
+      </td>
+      <%# select row %>
+      <td>
+        <%= f.radio_button :flight_id, flight.id, class: 'form-check-input' %>
+      </td>
     </tr>
-  </thead>
-  <tbody>
-  <% @flights.each do |flight| %>
-  <tr>
-    <td>
-    <%= format_flight_time(flight.departure_time) %>
-    <%= flight.origin.code %>
-    <i class="fas fa-plane"></i><%= flight.aircraft.model %>
-    </td>
-    <td>
-    <%= format_flight_time(flight.arrival_time) %>
-    <%= flight.destination.code %>
-    </td>
-    <td>
-    <%= format_flight_duration(flight.arrival_time - flight.departure_time) %>
-    </td>
-    <td>
-    <%= f.radio_button :flight_id, flight.id %>
-    </td>
-  </tr>
-  <% end %>
-  </tbody>
-  </table>
-  <%= f.submit 'Continue' %>
-  <% end %>
-</section>
+    <% end %>
+    </tbody>
+    </table>
+    <%# hidden_field_tag 'passengers', @flight_search_params[:passengers] %>
+    <%= f.submit 'Continue', class: 'btn btn-primary submit_orange' %>
+    <% end %>
+</main>
