@@ -1,0 +1,19 @@
+<main class="booking__main my-5">
+  <h1>Booking</h1>
+  <hr>
+  <%= form_with model: @booking do |f| %>
+    <h2>Booking Information</h2>
+    <%= f.label :email, class: 'form-label' %>
+    <%= f.email_field :email, class: 'form-control' %>
+  
+    <%# passengers %>
+    <h2>Passengers Information</h2>
+    <%= f.fields_for :passengers do |passengers_form| %>
+      <%= passengers_form.label :name, class: 'form-label' %>
+      <%= passengers_form.text_field :name, class: 'form-control' %>
+    <% end %>
+  
+    <%= f.hidden_field 'flight_id', value: @flight.id %>
+    <%= f.submit 'Book flight', class: 'btn btn-primary booking__submit mt-3' %>
+  <% end %>
+</main>

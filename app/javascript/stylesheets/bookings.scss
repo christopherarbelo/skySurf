@@ -1,0 +1,29 @@
+@use 'bootstrap';
+
+.booking {
+  &__main {
+    width: 75%;
+    margin: 0 auto;
+    min-height: 50vh;
+  }
+
+  &__submit {
+    height: 100%;
+    background-color: #faa300;
+    border: 1px solid #faa300;
+    font-weight: 800;
+  }
+}
+
+// media queries
+@include bootstrap.media-breakpoint-down(md) {
+  .booking__main {
+    width: 85% !important;
+  }
+}
+
+@include bootstrap.media-breakpoint-down(sm) {
+  .booking__main {
+    width: 95% !important;
+  }
+}

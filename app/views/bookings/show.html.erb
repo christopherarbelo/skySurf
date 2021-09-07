@@ -1,0 +1,45 @@
+<main class="booking__main">
+  <h1 class="mt-5">Booking Information</h1>
+  <p>Your booking confirmation number is: #<%= @booking.id %></p>
+  <section class="booking__details">
+    <table class="flights_table table table-hover" id="flights_table">
+      <thead>
+        <tr>
+          <td>Departs</td>
+          <td>Arrives</td>
+          <td>Duration</td>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <%# departs row %>
+        <td>
+          <%= format_flight_time(@booking.flight.departure_time) %>
+          <div class="d-flex align-items-center flex-wrap">
+            <div>
+              <span class="location_icon me-1"><i class="fas fa-map-marker-alt"></i></span>
+              <span class="flight_airport me-2"><%= @booking.flight.origin.code %></span>
+            </div>
+            <div>
+              <span class="aircraft_icon"><i class="fas fa-plane"></i></span>
+              <span class="aircraft_model ms-2"><%= @booking.flight.aircraft.model %></span>
+            </div>
+          </div>
+        </td>
+        <%# arrives row %>
+        <td>
+          <%= format_flight_time(@booking.flight.arrival_time) %>
+          <div class="d-flex align-items-center flex-wrap">
+            <span class="location_icon me-1"><i class="fas fa-map-marker-alt"></i></span>
+            <span class="flight_airport me-2"><%= @booking.flight.destination.code %></span>
+          </div>
+        </td>
+        <%# flight time row %>
+        <td>
+          <%= format_flight_duration(@booking.flight.arrival_time - @booking.flight.departure_time) %>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
