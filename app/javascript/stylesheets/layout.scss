@@ -96,6 +96,20 @@ html {
   font-weight: 700;
 }
 
+// Flash messages
+.toast {
+  margin-top: 72px;
+  z-index: 2;
+
+  &__alert {
+    background: red;
+  }
+
+  &__notice {
+    background: greenyellow;
+  }
+}
+
 @include bootstrap.media-breakpoint-down(lg) {
   .footer_non_accord {
     grid-template-areas:

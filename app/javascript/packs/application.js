@@ -11,6 +11,9 @@ import "channels"
 // bootstrap
 import 'bootstrap'
 import "../stylesheets/application"
+// bootstrap - toast
+import "../layout/flash_toast"
+
 // font-awesome
 import "@fortawesome/fontawesome-free/js/all"
 
