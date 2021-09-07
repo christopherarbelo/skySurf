@@ -20,6 +20,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
       flash[:notice] = 'Horay! You\'re all set!'
+      BookingMailer.with(booking: @booking).itinerary.deliver_now
       redirect_to booking_path(@booking.id)
     else
       flash[:alert] = 'Something went wrong'
