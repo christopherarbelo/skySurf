@@ -1,3 +1,4 @@
+Booking.destroy_all
 Flight.destroy_all
 Airport.destroy_all
 Aircraft.destroy_all
@@ -15,9 +16,9 @@ a320_2 = Aircraft.create(brand: 'Airbus', model: 'a320neo', capacity: 180)
 a321_1 = Aircraft.create(brand: 'Airbus', model: 'a321neo', capacity: 220)
 
 # Flights
-flight_one = Flight.create(aircraft_id: a320_1.id, origin_id: jfk.id, destination_id: lax.id, date: Date.new(2021, 8, 29),
-                           departure_time: DateTime.new(2021, 8, 29, 13, 35), 
-                           arrival_time: DateTime.new(2021, 8, 29, 16, 15))
-flight_two = Flight.create(aircraft_id: a321_1.id, origin_id: jfk.id, destination_id: lax.id, date: Date.new(2021, 8, 29),
-                           departure_time: DateTime.new(2021, 8, 29, 15, 45), 
-                           arrival_time: DateTime.new(2021, 8, 29, 18, 10))
+flight_one = Flight.create(aircraft_id: a320_1.id, origin_id: jfk.id, destination_id: lax.id, date: Date.new(2021, 12, 29),
+                           departure_time: DateTime.new(2021, 12, 29, 13, 35), 
+                           arrival_time: DateTime.new(2021, 12, 29, 16, 15))
+flight_two = Flight.create(aircraft_id: a321_1.id, origin_id: jfk.id, destination_id: lax.id, date: Date.new(2021, 12, 29),
+                           departure_time: DateTime.new(2021, 12, 29, 15, 45), 
+                           arrival_time: DateTime.new(2021, 12, 29, 18, 10))
